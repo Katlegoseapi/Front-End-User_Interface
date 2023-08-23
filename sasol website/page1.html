@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Login Page</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+      }
+      
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding: 0px;
+      }
+      
+      .logo {
+        padding-top: 150px;
+        max-width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
+      }
+      
+      .heading {
+        width: 30px;
+        height: 30px;
+        color: #007bff;
+        margin-top: 20px;
+        text-align: center;
+      }
+      
+      .step-progress {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .color{
+        color:#007bff;
+      }
+      .step-item {
+        width: 50px;
+        height: 50px;
+        background-color: #ccc;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 20px;
+      }
+      
+      .step-item.active {
+        background-color: #007bff;
+        color: white;
+      }
+      
+      .sub-heading {
+        text-align: center;
+        margin-top: 20px;
+      }
+      
+      .login-box {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        margin-top: 20px;
+      }
+      
+      .login-box form {
+        position: relative;
+      }
+      
+      .step {
+        display: none;
+      }
+      
+      .step:first-child {
+        display: block;
+      }
+      
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .login-box h1 {
+
+        text-align: left;
+        margin-top: 20px;
+      }
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      
+      .next-btn, .submit-btn {
+        padding: 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        position: absolute;
+        bottom: -70px;
+        right: 20px;
+      }
+      
+      .next-btn:hover, .submit-btn:hover {
+        background-color: #0056b3;
+      }
+
+      .containers {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      h3 {
+        text-align: left;
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      
+      th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+      }
+      
+      th {
+        font-weight: bold;
+      }
+      
+      td {
+        font-weight: normal;
+      }
+      
+      td[contenteditable="true"] {
+        cursor: text;
+      }
+      
+      td[contenteditable="true"]:focus {
+        outline: 2px solid #007bff;
+      }
+      
+</style>
+<body>
+  <div class="container">
+    <img src="images/SASOL.png" alt="Company Logo" class="logo">
+    <div class="step-progress">
+      <div class="step-item">Step 1</div>
+      <div class="step-item">Step 2</div>
+      <div class="step-item">Step 3</div>
+      <div class="step-item">Step 4</div>
+      <div class="step-item">Step 5</div>
+    </div>
+    <h2 class="sub-heading">Fill in your details:</h2>
+    <div class="login-box">
+      <form id="login-form">
+        <div class="step" id="step1">
+        <input type="text" pattern="\d{8}" title="Please enter an 8-digit number" placeholder="Delivery No" required>
+        <input type="text" placeholder="Customer P/O No">
+        <textarea placeholder="Delivery Address" rows="5"></textarea>
+        <textarea placeholder="Delivery Details" rows="5"></textarea>
+          <button type="button" class="next-btn" onclick="nextStep()">Submit</button>
+        </div>
+        <div class="step" id="step2">
+            <h2 class="sub-heading">Order dispatched in good order</h2>
+            <h3>Dispatched by</h3>
+            <input type="text"  placeholder="Name" required>
+            <input type="text" placeholder="Signature">
+            <input type="text" placeholder="ID/Control No" id="card-number" required>
+            <input type="text" placeholder="Date & Time Dispatched" id="Date&Time" required>
+          <button type="button" class="back-btn" onclick="prevStep()">Back</button>
+          <button type="button" class="next-btn" onclick="nextStep()">Submit</button>
+        </div>
+        <div class="step" id="step3">
+            <h3>Driver details</h3>
+            <input type="text"  placeholder="Name" required>
+            <input type="text" placeholder="Signature">
+            <input type="text" pattern="\d{13}" title="Please enter an 13-digit number" placeholder="ID/Contact No" id="card-number" required>
+            <input type="text" placeholder="Date & Time Dispatched" id="Date&Time" required>
+            <input type="text" placeholder="Transporter">
+            <input type="text" placeholder="Registration No Truck">
+            <input type="text" placeholder="Registration No Trailer">
+            <textarea placeholder="Driver's comment" rows="3"></textarea>
+          <button type="button" class="back-btn" onclick="prevStep()">Back</button>
+          <button type="button" class="next-btn" onclick="nextStep()">Submit</button>
+        </div>
+        <div class="step" id="step4">
+
+          <h3 text-align: center;>Discharge/offloading authorization</h3>
+          <label class="color"><br> The Qualified Person/Supervisor(Consignee)warrants that: The contents of the vehicle have been identified from this Delivery Note. The storage tank/silo/warehouse can accept the quality to be delivered. Discharge/offloading will be affected and supervisor by the Consignee, except that the controls of the Transport’s vehicle(s) will be operated by the Driver or in terms of the Off-loading Agreement. In the case of tanker discharge, the connection between the Transporter’s tanker and the Consignee facility has been properly made. Discharge/off-loading is hereby authorised.<br></label>
+        <label><input type="checkbox" id="terms-checkbox" required> I accept the terms and conditions<br></label>
+        <button type="button" class="back-btn" onclick="prevStep()">Back</button>
+          <button type="button" class="next-btn" onclick="nextStep()">Submit</button>
+        </div>
+        <div class="step" id="step5">
+          <h3>Ship to party</h3>
+          <input type="text" placeholder="Name">
+          <h3>Discharge/Offloading authorization</h3>
+          <input type="text" placeholder="Signature">
+          <input type="text" placeholder="Date & time received">
+          <h3>Customer comment/remarks</h3>
+          <textarea placeholder="text" rows="5"></textarea>
+          <div class="containers">
+              <h3>Goods returned and damage goods</h3>
+              <table id="data-table">
+                <thead>
+                  <tr>
+                    <th>Material</th>
+                    <th>QTY</th>
+                    <th>UOM</th>
+                    <th>Customer Signature</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id="table-row">
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        <button type="button" class="back-btn" onclick="prevStep()">Back</button>
+          <button type="submit" class="submit-btn">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    let currentStep = 1;
+    const steps = document.querySelectorAll(".step");
+    const stepItems = document.querySelectorAll(".step-item");
+    const submitBtn = document.querySelector(".submit-btn");
+    
+    showStep(currentStep);
+    
+    function showStep(stepNumber) {
+      steps.forEach((step, index) => {
+        if (index + 1 === stepNumber) {
+          step.style.display = "block";
+        } else {
+          step.style.display = "none";
+        }
+      });
+    
+      stepItems.forEach((item, index) => {
+        if (index + 1 === stepNumber) {
+          item.classList.add("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+    
+      if (stepNumber === 1) {
+        document.querySelector(".back-btn").style.display = "none";
+      } else {
+        document.querySelector(".back-btn").style.display = "inline";
+      }
+    
+      if (stepNumber === steps.length) {
+        submitBtn.style.display = "inline";
+      } else {
+        submitBtn.style.display = "none";
+      }
+    }
+    
+    function nextStep() {
+      if (currentStep < steps.length) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    }
+    
+    function prevStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    }
+    
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      // Save data or perform other actions here
+    });
+    
+  </script>
+</body>
+</html>
